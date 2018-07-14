@@ -1,0 +1,23 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: no
+  become: True
+  vars_files:
+    - config.yml
+
+  tasks:
+  - name: Create logfile
+    file: path=/var/log/ansible-pull.log state=file owner={{ ssh_user }} group={{ ssh_user }} mode=0644
+
+  - name: Create logrotate entry for ansible-pull.log
+    template:
+      src: templates/ansible-pull.logrotate.j2
+      dest: /etc/logrotate.d/ansible-pull
+      mode: 0644
+
+  - name: Add cron task for ansible-pull
+    template:
+      src: templates/ansible-pull.cron.j2
+      dest: /etc/cron.d/ansible-pull
+      mode: 0644
