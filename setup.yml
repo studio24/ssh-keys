@@ -8,7 +8,7 @@
 
   tasks:
   - name: Create logfile
-    file: path=/var/log/ansible-pull.log state=file owner={{ ssh_user }} group={{ ssh_user }} mode=0644
+    file: path=/var/log/ansible-pull.log state=touch owner={{ ssh_user }} group={{ ssh_user }} mode=0644
 
   - name: Create logrotate entry for ansible-pull.log
     template:
