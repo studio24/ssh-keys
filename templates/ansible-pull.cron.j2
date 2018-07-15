@@ -1,3 +1,3 @@
 # Cron job to run SSH Keys import script every half hour
 TEMP=/home/{{ ssh_user }}/.ansible/tmp
-*/30 * * * * {{ ssh_user }} ansible-pull --only-if-changed -U git@bitbucket.org:studio24/ssh-keys.git >> {{ ansible_pull_log }} 2>&1
+*/30 * * * * {{ ssh_user }} ansible-pull --only-if-changed -U https://bitbucket.org/studio24/ssh-keys.git >> {{ ansible_pull_log }} 2>&1

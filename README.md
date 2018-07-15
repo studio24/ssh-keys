@@ -48,7 +48,7 @@ You can run the following setup Ansible playbook to automate the next steps.
 
 ```
 export TEMP=/root/.ansible/tmp
-ansible-pull -U git@bitbucket.org:studio24/ssh-keys.git setup.yml
+ansible-pull -U https://bitbucket.org/studio24/ssh-keys.git setup.yml
 ```
 
 #### Manual instructions
@@ -72,7 +72,7 @@ echo "/var/log/ansible-pull.log {
 
 echo "# Cron job to run SSH Keys import script every half hour
 TEMP=/home/studio24/.ansible/tmp
-*/30 * * * * studio24 ansible-pull -d /home/studio24/repo --only-if-changed -U git@bitbucket.org:studio24/ssh-keys.git >> /var/log/ansible-pull.log 2>&1
+*/30 * * * * studio24 ansible-pull -d /home/studio24/repo --only-if-changed -U https://bitbucket.org/studio24/ssh-keys.git >> /var/log/ansible-pull.log 2>&1
 
 " >> /etc/cron.d/ansible-pull
 ```
@@ -85,5 +85,5 @@ You can check this works by running the following command as the SSH user (not r
 su studio24
 export TEMP=/home/studio24/.ansible/tmp
 
-ansible-pull -U git@bitbucket.org:studio24/ssh-keys.git
+ansible-pull -U https://bitbucket.org/studio24/ssh-keys.git
 ``` 
