@@ -1,6 +1,6 @@
 ---
 # The SSH user to load the public keys into their authorized_keys file
-- ssh_user: studio24
+- ssh_user: deploy
 
 # Path to log for ansible-pull output
 - ansible_pull_log: /var/log/ansible-pull.log
