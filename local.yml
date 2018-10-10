@@ -12,7 +12,7 @@
     changed_when: php_output.stdout != 'SKIPPING'
 
   - name: Set correct permissions on .ssh folder
-    file: path=/home/{{ ssh_user }}/.ssh state=directory owner={{ ssh_user }} group=studio24 mode=0700
+    file: path=/home/{{ ssh_user }}/.ssh state=directory owner={{ ssh_user }} group={{ ssh_user }} mode=0700
 
   - name: Update SSH public keys in authorized_keys file
     template: src=/home/{{ ssh_user }}/.ansible/tmp/staff-public-keys.conf dest=/home/{{ ssh_user }}/.ssh/authorized_keys owner={{ ssh_user }} group={{ ssh_user }} mode=0600
