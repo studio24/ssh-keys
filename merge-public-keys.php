@@ -45,12 +45,38 @@ if ($keyPath === false) {
     throw new Exception('Key path not found at ' . $keyFolder);
 }
 
+// List of directories to include for key lookup
+$indexList = [$keyPath];
+
+// Look up permitted freelancers from pre-existing file on server.
+$freelancers_file = $_SERVER['HOME'].'/freelancers.json'; 
+
+if (file_exists($freelancers_file) && $file = file_get_contents($freelancers_file)) {
+
+    $freelancers = json_decode($file,true);
+
+    if (is_array($freelancers)) {
+
+        foreach ($freelancers as $name) {     
+            if (file_exists('freelancers/'.$name)) {
+                $indexList[] = 'freelancers/'.$name;
+            }
+        }
+
+    }
+}
+
+// Build list of keys from indexList directories.
 $data = [];
-$dir = new DirectoryIterator($keyPath);
-foreach ($dir as $fileinfo) {
-    if (!$fileinfo->isDot()) {
-        if ($fileinfo->getExtension() == 'pub') {
-            $data[] = trim(file_get_contents($fileinfo->getPathname()));
+
+foreach ($indexList as $directory) {
+    $dir = new DirectoryIterator($directory);
+    foreach ($dir as $fileinfo) {
+        if (!$fileinfo->isDot()) {
+            if ($fileinfo->getExtension() == 'pub') {
+                echo 'Adding '.$fileinfo->getPathname()."\n";
+                $data[] = trim(file_get_contents($fileinfo->getPathname()));
+            }
         }
     }
 }
