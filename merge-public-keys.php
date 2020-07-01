@@ -48,21 +48,45 @@ if ($keyPath === false) {
 // List of directories to include for key lookup
 $indexList = [$keyPath];
 
-// Look up permitted freelancers from pre-existing file on server.
-$freelancers_file = $_SERVER['HOME'].'/freelancers.json'; 
+// List of projects to look up freelancers on
+$projectPaths = [];
 
-if (file_exists($freelancers_file) && $file = file_get_contents($freelancers_file)) {
+// Look up local projects from pre-existing file on server, which 
+// we can use to search for freelancer.json files.
+$projectsFile = $_SERVER['HOME'].'/projects.json'; 
 
-    $freelancers = json_decode($file,true);
+if (file_exists($projectsFile) && $file = file_get_contents($projectsFile)) {
 
-    if (is_array($freelancers)) {
+    $projects = json_decode($file,true);
 
-        foreach ($freelancers as $name) {     
-            if (file_exists('freelancers/'.$name)) {
-                $indexList[] = 'freelancers/'.$name;
+    if (is_array($projects)) {
+
+        foreach ($projects as $path) {     
+            if (file_exists($path)) {
+                $projectPaths[] = $path;
             }
         }
 
+    }
+}
+
+// Look up permitted freelancers from previously acquired project repos.
+foreach ($projectPaths as $path) {
+    $freelancersFile = $path.'/freelancers.json'; 
+
+    if (file_exists($freelancersFile) && $file = file_get_contents($freelancersFile)) {
+
+        $freelancers = json_decode($file,true);
+
+        if (is_array($freelancers)) {
+
+            foreach ($freelancers as $name) {     
+                if (file_exists('freelancers/'.$name)) {
+                    $indexList[] = 'freelancers/'.$name;
+                }
+            }
+
+        }
     }
 }
 
