@@ -4,6 +4,7 @@ It is recommended to lock down server access to our office IP address (supplied 
 
 **This repo is currently maintained on both GitHub and BitBucket, please update in both repos. Bitbucket https://bitbucket.org/studio24/ssh-keys**
 
+
 ## Adding your public key
 
 Ensure your current public key is stored in the `staff/` folder, please note this should only contain current Studio 24 staff.
@@ -20,7 +21,7 @@ Update your key (replace `simon_jones.pub` with your name):
 cp ~/.ssh/id_rsa.pub ~/Sites/ssh-keys/staff/simon_jones.pub
 ```
 
-Please add your public key changes to a branch and create a Pull Request to merge into master. Please note only Simon (MD) and Matt (Technical Lead) have write access to master.
+Please add your public key changes to a branch and create a Pull Request to merge into main. Please note only Simon (MD), Gareth Trinkwon and Alan Isaacson have permissions to approve Pull Requests.
 
 ## Server setup
 
