@@ -2,6 +2,8 @@
 
 It is recommended to lock down server access to our office IP address (supplied on request) and to use SSH keys to login. This Ansible playbook can be used to distribute staff public SSH keys to servers.  
 
+**This repo is currently maintained on both GitHub and BitBucket, please update in both repos. Bitbucket https://bitbucket.org/studio24/ssh-keys**
+
 ## Adding your public key
 
 Ensure your current public key is stored in the `staff/` folder, please note this should only contain current Studio 24 staff.
@@ -9,7 +11,7 @@ Ensure your current public key is stored in the `staff/` folder, please note thi
 Clone the project:
 
 ```
-git clone git@bitbucket.org:studio24/ssh-keys.git ~/Sites/ssh-keys
+git clone https://github.com/studio24/ssh-keys.git ~/Sites/ssh-keys
 ```
 
 Update your key (replace `simon_jones.pub` with your name):
@@ -72,7 +74,7 @@ echo "/var/log/ansible-pull.log {
 
 echo "# Cron job to run SSH Keys import script every half hour
 TEMP=/home/studio24/.ansible/tmp
-*/30 * * * * studio24 ansible-pull -d /home/studio24/repo --only-if-changed -U https://bitbucket.org/studio24/ssh-keys.git >> /var/log/ansible-pull.log 2>&1
+*/30 * * * * studio24 ansible-pull -d /home/studio24/repo --only-if-changed -U https://github.com/studio24/ssh-keys.git >> /var/log/ansible-pull.log 2>&1
 
 " >> /etc/cron.d/ansible-pull
 ```
@@ -85,5 +87,5 @@ You can check this works by running the following command as the SSH user (not r
 su studio24
 export TEMP=/home/studio24/.ansible/tmp
 
-ansible-pull -U https://bitbucket.org/studio24/ssh-keys.git
+ansible-pull -U https://github.com/studio24/ssh-keys.git
 ``` 
