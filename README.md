@@ -2,6 +2,8 @@
 
 It is recommended to lock down server access to our office IP address (supplied on request) and to use SSH keys to login. This Ansible playbook can be used to distribute staff public SSH keys to servers.  
 
+**This repo is currently maintained on both GitHub and BitBucket, please update in both repos. Bitbucket https://bitbucket.org/studio24/ssh-keys**
+
 ## Adding your public key
 
 Ensure your current public key is stored in the `staff/` folder, please note this should only contain current Studio 24 staff.
