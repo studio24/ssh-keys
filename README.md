@@ -12,7 +12,7 @@ Ensure your current public key is stored in the `staff/` folder, please note thi
 Clone the project:
 
 ```
-git clone https://github.com/studio24/ssh-keys.git ~/Sites/ssh-keys
+git clone git@github.com:studio24/ssh-keys.git ~/Sites/ssh-keys
 ```
 
 Update your key (replace `simon_jones.pub` with your name):
