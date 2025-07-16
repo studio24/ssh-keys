@@ -1,6 +1,7 @@
 ## Studio 24 access to client servers
 
-It is recommended to lock down server access to our office IP address (supplied on request) and to use SSH keys to login. This Ansible playbook can be used to distribute staff public SSH keys to servers.  
+We lock down remote server access to our office IP address (supplied on request) and to use SSH keys to login. 
+This repo contains instructions on how to add your SSH key and how to distribute staff public SSH keys to remote servers via Ansible.  
 
 ## Adding your public key
 
@@ -9,16 +10,22 @@ Ensure your current public key is stored in the `staff/` folder, please note thi
 Clone the project:
 
 ```
-git clone git@github.com:studio24/ssh-keys.git ~/Sites/ssh-keys
+mkdir -p ~/Sites/studio24
+git clone git@github.com:studio24/ssh-keys.git ~/Sites/studio24/ssh-keys
+cd /Sites/studio24/ssh-keys
 ```
 
 Update your key (replace `simon_jones.pub` with your name):
 
 ```
-cp ~/.ssh/id_rsa.pub ~/Sites/ssh-keys/staff/simon_jones.pub
+cp ~/.ssh/id_ed25519.pub staff/simon_jones.pub
 ```
 
-Please add your public key changes to a branch and create a Pull Request to merge into main. Please note only Simon (MD), Gareth Trinkwon and Alan Isaacson have permissions to approve Pull Requests.
+Please add your public key changes to a branch and create a Pull Request to merge into main. Please note only [codeowners](.github/CODEOWNERS) have permissions to approve Pull Requests.
+
+## Removing public keys
+
+When staff leave Studio 24 ensure their public keys are removed from this repo.
 
 ## Server setup
 
