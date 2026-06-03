@@ -1,7 +1,9 @@
 ## Studio 24 access to client servers
 
-We lock down remote server access to our office IP address (supplied on request) and to use SSH keys to login. 
-This repo contains instructions on how to add your SSH key and how to distribute staff public SSH keys to remote servers via Ansible.  
+We lock down remote server access to our IP addresses (supplied on request) and to use SSH keys to login. 
+This repo contains instructions on how to add your SSH key and how to distribute staff public SSH keys to remote servers via Ansible. 
+
+Studio 24 IP addresses and where/how to update them can be found in our [Dev playbook](https://github.com/studio24/dev-playbook/blob/main/hosting/ip-restricted.md)
 
 ## Adding your public key
 
